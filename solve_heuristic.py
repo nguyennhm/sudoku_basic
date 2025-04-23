@@ -1,6 +1,7 @@
 from check import check
 
 def solve_heuristic(grid, step_callback=lambda: None, step_mode=False):
+    # Tính số chữ số hợp lệ có thể điền vào ô
     def get_possible_values(row, col):
         values = set(range(1, 10))
         for x in range(9):
@@ -12,6 +13,7 @@ def solve_heuristic(grid, step_callback=lambda: None, step_mode=False):
                 values.discard(grid[start_row + i][start_col + j])
         return list(values)
 
+    # Tìm ô cần điền
     def find_mrv_cell():
         min_values = 10
         best_cell = None
@@ -24,7 +26,9 @@ def solve_heuristic(grid, step_callback=lambda: None, step_mode=False):
                         best_cell = (row, col, values)
         return best_cell
 
+    # chạy heuristic để điền các số vào ô trống
     def heuristic():
+        # Kiểm tra bảng 9x9 đã được điền hay chưa
         if all(grid[i][j] != 0 for i in range(9) for j in range(9)):
             return True
         cell = find_mrv_cell()

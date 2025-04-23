@@ -89,7 +89,7 @@ class SudokuApp:
 
         self.stats_label = tk.Label(
             self.main_frame,
-            text="Steps: 0 | Time: 0s",
+            text="Steps: 0",
             bg="#f0f0f0",
             font=("Arial", 10)
         )
@@ -137,7 +137,7 @@ class SudokuApp:
         self.board.set_fixed_cells(self.fixed_cells)
         self.steps = 0
         self.solve_time = 0
-        self.stats_label.config(text="Steps: 0 | Time: 0s")
+        self.stats_label.config(text="Steps: 0")
 
     def load_from_file(self):
         filepath = filedialog.askopenfilename(
@@ -155,7 +155,7 @@ class SudokuApp:
                     self.board.set_fixed_cells(self.fixed_cells)
                     self.steps = 0
                     self.solve_time = 0
-                    self.stats_label.config(text="Steps: 0 | Time: 0s")
+                    self.stats_label.config(text="Steps: 0")
                 else:
                     messagebox.showerror("Invalid File", "The selected file does not contain a valid Sudoku puzzle.")
             except Exception as e:
@@ -169,7 +169,7 @@ class SudokuApp:
         self.board.update_grid(self.grid)
         self.steps = 0
         self.solve_time = 0
-        self.stats_label.config(text="Steps: 0 | Time: 0s")
+        self.stats_label.config(text="Steps: 0")
 
 
 if __name__ == "__main__":
